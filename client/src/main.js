@@ -5,7 +5,9 @@ const resButton = document.getElementById("get-things");
 // function which will fetch data from our server
 async function getBooks() {
   // we need to assign the result of a fetch() request to a variable
-  const response = await fetch("http://localhost:8080/books");
+  const response = await fetch(
+    "https://my-first-monorepo-server.onrender.com/books"
+  );
   // remember: to parse the data from the request, we do this:
   const booksData = await response.json();
   // console log the result from the fetch request here for now:
