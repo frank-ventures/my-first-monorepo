@@ -1,24 +1,20 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+// first here we have allowed our javascript to 'see' our HTML elements. We've assigned them to variables we can use
+const resContainer = document.getElementById("response_container");
+const resButton = document.getElementById("get-things");
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// function which will fetch data from our server
+async function getBooks() {
+  // we need to assign the result of a fetch() request to a variable
+  const response = await fetch("http://localhost:8080/books");
+  // remember: to parse the data from the request, we do this:
+  const booksData = await response.json();
+  // console log the result from the fetch request here for now:
+  console.log(booksData);
 
-setupCounter(document.querySelector('#counter'))
+  // Nice! Now that we have our array of objects, we can use a loop to render each one on the page
+  // Luckily, we have a resContainer to put the things in!
+}
+
+// Rather than just having this function run, we are going to attach an event listener to our button which run the function.
+
+resButton.addEventListener("click", getBooks);
