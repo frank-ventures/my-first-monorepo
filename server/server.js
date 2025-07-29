@@ -56,7 +56,7 @@ const ourBooks = [
 
 // --- --- ---
 // We need some GET routes next:
-// http://localhost8080:/
+// Here is our root route:
 app.get("/", function (request, response) {
   response.json("You're in my roots!"); // this send something back to the client
 });
